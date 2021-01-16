@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "407621587878",
+    "project_id": "social-55adb",
+    "storage_bucket": "social-55adb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:407621587878:android:e2d58807bdcecc5523f567",
+        "android_client_info": {
+          "package_name": "com.example.skype"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "407621587878-acf0937qjh0qbpmq90h46fvl0a1dnif3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.skype",
+            "certificate_hash": "640026d43c6f1803cc5ffce5ed7928035a6998c5"
+          }
+        },
+        {
+          "client_id": "407621587878-124o922rq5qjnoggflmbkvp4bk1d42u8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqHTooD-ZAwxCHgApG9kQqnFmwXn8liO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "407621587878-124o922rq5qjnoggflmbkvp4bk1d42u8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
