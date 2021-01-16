@@ -53,29 +53,37 @@ class _CallScreenState extends State<CallScreen> {
     _addAgoraEventHandlers();
     await AgoraRtcEngine.enableWebSdkInteroperability(true);
     await AgoraRtcEngine.setParameters(
-        '''{\"che.video.lowBitRateStreamParameter\":{\"width\":320,\"height\":180,\"frameRate\":15,\"bitRate\":140}}''');
-    await AgoraRtcEngine.joinChannel(null, widget.call.channelId, null, 0);
+      '''{\"che.video.lowBitRateStreamParameter\":{\"width\":320,\"height\":180,\"frameRate\":15,\"bitRate\":140}}''',
+    );
+    await AgoraRtcEngine.joinChannel(
+      null,
+      widget.call.channelId,
+      null,
+      0,
+    );
   }
 
   addPostFrameCallback() {
-    SchedulerBinding.instance.addPostFrameCallback((_) {
-      userProvider = Provider.of<UserProvider>(context, listen: false);
+    SchedulerBinding.instance.addPostFrameCallback(
+      (_) {
+        userProvider = Provider.of<UserProvider>(context, listen: false);
 
-      callStreamSubscription = callMethods
-          .callStream(uid: userProvider.getUser.uid)
-          .listen((DocumentSnapshot ds) {
-        // defining the logic
-        switch (ds.data) {
-          case null:
-            // snapshot is null which means that call is hanged and documents are deleted
-            Navigator.pop(context);
-            break;
+        callStreamSubscription = callMethods
+            .callStream(uid: userProvider.getUser.uid)
+            .listen((DocumentSnapshot ds) {
+          // defining the logic
+          switch (ds.data) {
+            case null:
+              // snapshot is null which means that call is hanged and documents are deleted
+              Navigator.pop(context);
+              break;
 
-          default:
-            break;
-        }
-      });
-    });
+            default:
+              break;
+          }
+        });
+      },
+    );
   }
 
   /// Create agora sdk instance and initialize
@@ -181,9 +189,17 @@ class _CallScreenState extends State<CallScreen> {
   /// Helper function to get list of native views
   List<Widget> _getRenderViews() {
     final List<AgoraRenderWidget> list = [
-      AgoraRenderWidget(0, local: true, preview: true),
+      AgoraRenderWidget(
+        0,
+        local: true,
+        preview: true,
+      ),
     ];
-    _users.forEach((int uid) => list.add(AgoraRenderWidget(uid)));
+    _users.forEach(
+      (int uid) => list.add(
+        AgoraRenderWidget(uid),
+      ),
+    );
     return list;
   }
 
@@ -208,17 +224,19 @@ class _CallScreenState extends State<CallScreen> {
     switch (views.length) {
       case 1:
         return Container(
-            child: Column(
-          children: <Widget>[_videoView(views[0])],
-        ));
+          child: Column(
+            children: <Widget>[_videoView(views[0])],
+          ),
+        );
       case 2:
         return Container(
-            child: Column(
-          children: <Widget>[
-            _expandedVideoRow([views[0]]),
-            _expandedVideoRow([views[1]])
-          ],
-        ));
+          child: Column(
+            children: <Widget>[
+              _expandedVideoRow([views[0]]),
+              _expandedVideoRow([views[1]])
+            ],
+          ),
+        );
       case 3:
         return Container(
             child: Column(

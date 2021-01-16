@@ -52,7 +52,6 @@ class LoginScreenState extends State<LoginScreen> {
   }
 
   void performLogin() async {
-  
     setState(() {
       isLoginPressed = true;
     });
@@ -74,12 +73,16 @@ class LoginScreenState extends State<LoginScreen> {
       });
 
       if (isNewUser) {
-        _authMethods.addDataToDb(user).then((value) {
-          Navigator.pushReplacement(context,
+        _authMethods.addDataToDb(user).then(
+          (value) {
+            Navigator.pushReplacement(
+              context,
               MaterialPageRoute(builder: (context) {
-            return HomeScreen();
-          }));
-        });
+                return HomeScreen();
+              }),
+            );
+          },
+        );
       } else {
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) {

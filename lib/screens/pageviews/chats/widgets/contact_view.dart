@@ -10,7 +10,7 @@ import 'package:skype/screens/chatscreens/widgets/cached_image.dart';
 import 'package:skype/widgets/custom_tile.dart';
 
 import 'last_message_container.dart';
-import 'online_dot_indicator.dart';
+import 'outline_dot_indicator.dart';
 
 class ContactView extends StatelessWidget {
   final Contact contact;
